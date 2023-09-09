@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 40px 0 40px 0;
+    color: rgb(224, 229, 233);
+    
+
+}
+
+body {
+background-color: rgba(22, 6, 6, 0.932)
+
+}
+
+.box, form {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+input{
+    width:  250px;
+    height: 30px;
+    border-radius: 15px;
+    padding: 0 15px 0 15px;
+
+}
+
+button{
+    width: 150px;
+    height: 25px;
+}
