@@ -1,52 +1,48 @@
+import java.util.Scanner;
 
 public class JogoDaVelha {
 
     public static void main(String[] args) {
+        System.out.println(" ---- JOGO DA VELHA ---- ");
+        System.out.println("Jogador X inicia a partida.\n");
 
-        Table tab = new Table();
-        Peca[][] tabuleiro = tab.createEmptyTable();
-        Peca[][] tabuleiro1 = Table.createEmptyTable();
-        tabuleiro[1][1].setJogador(Jogador.X);
-        tabuleiro[0][0].setJogador(Jogador.O);
-        tab.printTable(tabuleiro);
+        Scanner scan = new Scanner(System.in);
+        Peca[][] tabuleiro = Table.createEmptyTable();
+        Table.printTable(tabuleiro);
+
+        Jogador jogador = Jogador.X;
+        Boolean fimJogo = false;
 
 
-        Table.printTable(tabuleiro1);
+        while (!fimJogo) {
+
+            System.out.print("Vez do Jogador " + jogador + " .Escolha uma posição: Exemplo 11 (linha x coluna) : ");
+            String posicao = scan.nextLine();
+
+            if (!Jogada.verificaJogada(tabuleiro, posicao)){
+                //System.out.println("" + "Jogada Invalida");
+                continue;
+            }
+            int linha = Integer.parseInt(String.valueOf(posicao.charAt(0)));
+            int coluna = Integer.parseInt(String.valueOf(posicao.charAt(1)));
+
+            // Todo vericar jogada valida
+            // Todo verificar se já tem vencedor
+
+            tabuleiro[linha-1][coluna-1].setJogador(jogador);
+            Table.printTable(tabuleiro);
+            // inverte jogador da vez
+            if (jogador == Jogador.X){
+                jogador = Jogador.O;
+            }else {
+                jogador = Jogador.X;
+            }
+
+
+
+        }
     }
 
 }
-
-//        Peca[][] tabuleiro2 = createEmptyTable();
-//        System.out.println(tabuleiro2[1][2].getJogador());
-//        printTable(tabuleiro);
-
-
-
-        /*Table tabuleiro = new Table();
-
-        tabuleiro.createEmptyTable();
-        tabuleiro.printTable();
-
-
-        List<Peca> pecas = new ArrayList<>();
-        System.out.println("digita a posição");
-
-        Peca peca1 = new Peca();
-        peca1.setJogador(Jogador.X);
-        peca1.setPositionL(1);
-        peca1.setGetPositionC(1);
-        pecas.add(peca1);
-
-        Peca peca2 = new Peca();
-        peca2.setJogador(Jogador.O);
-        peca2.setPositionL(2);
-        peca2.setGetPositionC(1);
-        pecas.add(peca2);
-
-        System.out.println(pecas);
-
-
-
-*/
 
 

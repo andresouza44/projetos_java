@@ -29,7 +29,11 @@ public class Table {
                         System.out.print("    ");
                     }
                 } else {
-                    System.out.print("  " + tabuleiro[lin][col].getJogador() + "   | ");
+                    if (col != 2) {
+                        System.out.print("  " + tabuleiro[lin][col].getJogador() + "   | ");
+                    } else {
+                        System.out.print("  " + tabuleiro[lin][col].getJogador());
+                    }
                 }
 
 
