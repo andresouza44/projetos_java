@@ -11,7 +11,8 @@ public class JogoDaVelha {
         Table.printTable(tabuleiro);
 
         Jogador jogador = Jogador.X;
-        Boolean fimJogo = false;
+        boolean fimJogo = false;
+        int contJogadas = 0;
 
 
         while (!fimJogo) {
@@ -20,17 +21,22 @@ public class JogoDaVelha {
             String posicao = scan.nextLine();
 
             if (!Jogada.verificaJogada(tabuleiro, posicao)){
-                //System.out.println("" + "Jogada Invalida");
                 continue;
             }
+
             int linha = Integer.parseInt(String.valueOf(posicao.charAt(0)));
             int coluna = Integer.parseInt(String.valueOf(posicao.charAt(1)));
 
-            // Todo vericar jogada valida
-            // Todo verificar se já tem vencedor
-
+            // Adiciona peça ao tabuleiro
             tabuleiro[linha-1][coluna-1].setJogador(jogador);
             Table.printTable(tabuleiro);
+
+            if(Jogada.vencedor(tabuleiro)){
+                System.out.println("Fim de jogo. Vencedor Jogador: " + jogador );
+                fimJogo = true;
+            };
+
+
             // inverte jogador da vez
             if (jogador == Jogador.X){
                 jogador = Jogador.O;
@@ -38,8 +44,11 @@ public class JogoDaVelha {
                 jogador = Jogador.X;
             }
 
-
-
+            contJogadas ++ ;
+            if (contJogadas ==9){
+                System.out.println("Fim de jogo : EMPATE");
+                fimJogo = true;
+            }
         }
     }
 
